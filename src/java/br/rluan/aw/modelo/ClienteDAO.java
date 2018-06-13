@@ -2,18 +2,18 @@
 package br.rluan.aw.modelo;
  
 // Importações
+import br.rluan.aw.dados.DadosGerais;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
  
 // Declaração da classe
 public class ClienteDAO {
- 
   // Quatro variáveis finais para conexão com banco de dados
-  private static final String DRIVER = "com.mysql.jdbc.Driver";
-  private static final String URL = "jdbc:mysql://localhost:3306/av1";
-  private static final String USUARIO = "root";
-  private static final String SENHA = "12345";
+  private static final String DRIVER = DadosGerais.getDRIVER();
+  private static final String URL = DadosGerais.getURL();
+  private static final String USUARIO = DadosGerais.getUSUARIO();
+  private static final String SENHA = DadosGerais.getSENHA();
   // Variáveis finais com instruções SQL
   private static final String sqlSelecao = "SELECT * FROM produtos ORDER BY modelo";
   private static final String sqlInclusao = "insert into produtos(modelo, marca, cor, ano) values (?, ?, ?, ?)";

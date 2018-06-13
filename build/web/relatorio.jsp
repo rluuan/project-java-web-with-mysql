@@ -3,12 +3,15 @@
     Created on : 13/06/2018, 17:49:11
     Author     : trunks
 --%>
-
+<%@page import="br.rluan.aw.dados.DadosGerais"%>
 <%@page import="java.util.List"%>
 <%@page import="br.rluan.aw.modelo.ClienteDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.rluan.aw.modelo.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% DadosGerais dadosSite = new DadosGerais(); %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +23,7 @@
     
 
 
-    <title>Gentelella Alela! | </title>
+    <title><% out.print(dadosSite.getNomeSite()); %>! | </title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +47,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span><% out.print(dadosSite.getNomeSite()); %>!</span></a>
             </div>
 
             <div class="clearfix"></div>
