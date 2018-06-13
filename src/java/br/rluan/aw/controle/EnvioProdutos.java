@@ -6,14 +6,9 @@
 package br.rluan.aw.controle;
 
 import br.rluan.aw.modelo.Cliente;
-import br.rluan.aw.modelo.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author trunks
  */
-@WebServlet(name = "CadastroProdutos", urlPatterns = {"/cadastroProdutos.do"})
-public class CadastroProdutos extends HttpServlet {
+public class EnvioProdutos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,8 +33,15 @@ public class CadastroProdutos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            response.sendRedirect("/Av1/index.jsp");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet EnvioProdutos</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet EnvioProdutos at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -57,7 +58,6 @@ public class CadastroProdutos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**
@@ -69,7 +69,7 @@ public class CadastroProdutos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             processRequest(request, response);
 
             String modelo = request.getParameter("modelo");
@@ -79,7 +79,7 @@ public class CadastroProdutos extends HttpServlet {
 
             Cliente cl = new Cliente(modelo, marca, ano, cor);
     //        ClienteDAO.inserirCliente(cl);
-            
+            response.sendRedirect("www.google.com");
             return;
         }
 
@@ -94,4 +94,3 @@ public class CadastroProdutos extends HttpServlet {
     }// </editor-fold>
 
 }
-
