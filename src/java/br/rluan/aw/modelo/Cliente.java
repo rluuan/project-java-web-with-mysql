@@ -13,6 +13,32 @@ public class Cliente implements Serializable {
   private String name;
   private String email;
   private String pass;
+  
+  private String modelo;
+  private String ano;
+  private String cor;
+  private String marca;
+  
+  public Cliente() {
+  }
+ 
+  // Segundo método construtor, com todos os argumentos
+  public Cliente(String nomeCliente, String email, String pass) {
+    this.name = nomeCliente;
+    this.pass = pass;
+    this.email = email;
+  }
+  public Cliente(String nomeCliente, String email) {
+    this.name = nomeCliente;
+    this.pass = pass;
+    this.email = email;
+  }
+  public Cliente(String modelo, String marca, String ano, String cor) {
+      this.modelo = modelo;
+      this.marca = marca;
+      this.ano = ano;
+      this.cor = cor;
+  }
 
     public String getModelo() {
         return modelo;
@@ -45,10 +71,7 @@ public class Cliente implements Serializable {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-  private String modelo;
-  private String ano;
-  private String cor;
-  private String marca;
+
   
 
     public String getPass() {
@@ -58,31 +81,8 @@ public class Cliente implements Serializable {
     public void setPass(String pass) {
         this.pass = pass;
     }
-  // Dois métodos construtores
-  // Primeiro método construtor, sem argumentos, típico de JavaBeans
-  public Cliente() {
-  }
+  
  
-  // Segundo método construtor, com todos os argumentos
-  public Cliente(String nomeCliente, String email, String pass) {
-    this.name = nomeCliente;
-    this.pass = pass;
-    this.email = email;
-  }
-  public Cliente(String nomeCliente, String email) {
-    this.name = nomeCliente;
-    this.pass = pass;
-    this.email = email;
-  }
-  public Cliente(String modelo, String marca, String ano, String cor) {
-      this.modelo = modelo;
-      this.marca = marca;
-      this.ano = ano;
-      this.cor = cor;
-  }
- 
-  // Seguem-se todos os métodos de acesso (Getters e Setters)
-
     public String getName() {
         return name;
     }

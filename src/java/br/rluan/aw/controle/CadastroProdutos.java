@@ -9,6 +9,8 @@ import br.rluan.aw.modelo.Cliente;
 import br.rluan.aw.modelo.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,15 +77,14 @@ public class CadastroProdutos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-        response.sendRedirect(request.getContextPath() + "/Login.jsp");
         String modelo = request.getParameter("modelo");
         String marca = request.getParameter("marca");
         String ano = request.getParameter("ano");
         String cor = request.getParameter("cor");
         
         Cliente cl = new Cliente(modelo, marca, ano, cor);
-//        ClienteDAO.inserirCliente(cl);
-        
+        ClienteDAO.inserirCliente(cl);
+        response.sendRedirect("http://localhost:8080/Av1/form.html");
     }
 
     /**

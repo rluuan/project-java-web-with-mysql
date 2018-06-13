@@ -16,7 +16,7 @@ public class ClienteDAO {
   private static final String SENHA = "12345";
   // Variáveis finais com instruções SQL
   private static final String sqlSelecao = "SELECT * FROM produtos ORDER BY modelo";
-  private static final String sqlInclusao = "insert into produtos(modelo, marca, cor) values (?, ?, ?)";
+  private static final String sqlInclusao = "insert into produtos(modelo, marca, cor, ano) values (?, ?, ?, ?)";
   // Objetos para conexão com banco de dados
   private static Connection conexao;
   private static PreparedStatement ps;
@@ -61,6 +61,7 @@ public class ClienteDAO {
         ps.setString(1, cliente.getModelo());
         ps.setString(2, cliente.getMarca());
         ps.setString(3, cliente.getCor());
+        ps.setString(4, cliente.getAno());
         ps.execute();
         retorno = true;
       } catch (SQLException sqle) {
