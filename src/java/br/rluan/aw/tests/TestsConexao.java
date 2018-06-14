@@ -15,9 +15,8 @@ import java.util.List;
 public class TestsConexao {
     public static void main(String[] args) {
         ClienteDAO.conectar();
-        Cliente cl = new Cliente("modelo", "marca2", "2018-06-13", "red");
-        ClienteDAO.inserirCliente(cl);
-        System.out.println(ClienteDAO.todosClientes().get(5).getModelo());
+        ClienteDAO cl = new ClienteDAO();
+        cl.removerProduto(29);
         
     }
 }

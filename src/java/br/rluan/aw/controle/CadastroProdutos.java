@@ -78,7 +78,7 @@ public class CadastroProdutos extends HttpServlet {
             String cor = request.getParameter("cor");
 
             Cliente cl = new Cliente(modelo, marca, ano, cor);
-    //        ClienteDAO.inserirCliente(cl);
+            ClienteDAO.inserirCliente(cl);
             
             return;
         }

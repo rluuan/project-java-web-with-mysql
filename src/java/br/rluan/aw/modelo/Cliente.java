@@ -18,28 +18,33 @@ public class Cliente implements Serializable {
   private String ano;
   private String cor;
   private String marca;
+  private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
   
   public Cliente() {
   }
  
   // Segundo método construtor, com todos os argumentos
-  public Cliente(String nomeCliente, String email, String pass) {
-    this.name = nomeCliente;
-    this.pass = pass;
-    this.email = email;
-  }
-  public Cliente(String nomeCliente, String email) {
-    this.name = nomeCliente;
-    this.pass = pass;
-    this.email = email;
-  }
   public Cliente(String modelo, String marca, String ano, String cor) {
       this.modelo = modelo;
       this.marca = marca;
       this.ano = ano;
       this.cor = cor;
   }
-
+public Cliente(String modelo, String marca, String ano, String cor,int id) {
+      this.modelo = modelo;
+      this.marca = marca;
+      this.ano = ano;
+      this.cor = cor;
+      this.id = id;
+  }
     public String getModelo() {
         return modelo;
     }

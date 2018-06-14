@@ -86,13 +86,14 @@
             <div class="clearfix"></div>
 
             <div class="row">
-                <table class="table" id="table_id">
+                <table class="dataTable no-footer table table-bordered table-striped" id="table_id">
                     <thead>
                         <tr>
                             <th> Modelo </th>
                             <th> Marca </th>
                             <th> Ano </th>
                             <th> Cor </th>
+                            <th> Remover </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,6 +108,7 @@
                             <td> <% out.print(listaProdutos.get(i).getMarca()); %> </td>
                             <td> <% out.print(listaProdutos.get(i).getAno()); %> </td>
                             <td> <% out.print(listaProdutos.get(i).getCor()); %> </td>
+                            <td> <button class="btn btn-danger" onclick="javascript:excluirProduto(<% out.print(listaProdutos.get(i).getId()); %>)"> Excluir </button> </td>
                         </tr>
                         <% } %>
                     </tbody>
@@ -145,7 +147,19 @@
       $(document).ready( function () {
     $('#table_id').DataTable();
 } );
-
+function excluirProduto(id) {
+    $.ajax({
+       url: 'excluirprodutowithId.do',
+       method: 'POST',
+       data: {
+           id: id
+       },
+       success: function(res) {
+           alert('Deletado com sucesso');
+           location.reload();
+       }
+    });
+}
 </script>
   </body>
 </html>

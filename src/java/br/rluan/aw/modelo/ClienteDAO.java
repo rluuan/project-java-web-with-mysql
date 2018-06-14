@@ -15,8 +15,9 @@ public class ClienteDAO {
   private static final String USUARIO = DadosGerais.getUSUARIO();
   private static final String SENHA = DadosGerais.getSENHA();
   // Variáveis finais com instruções SQL
-  private static final String sqlSelecao = "SELECT * FROM produtos ORDER BY modelo";
+  private static final String sqlSelecao = "SELECT * FROM produtos ORDER BY id DESC";
   private static final String sqlInclusao = "insert into produtos(modelo, marca, cor, ano) values (?, ?, ?, ?)";
+  private static final String sqlRemocao = "DELETE FROM produtos WHERE id = ?";
   // Objetos para conexão com banco de dados
   private static Connection conexao;
   private static PreparedStatement ps;
@@ -24,6 +25,17 @@ public class ClienteDAO {
   public static int estado;
  
   // Método para retornar todos os registros
+  public void removerProduto(int id) {
+      try {
+          ps = conexao.prepareStatement(sqlRemocao);
+          ps.setInt(1, id);
+          ps.execute();
+      } catch (Exception e) {
+          System.out.println(e);
+      }
+      
+      return;
+  }
   public static List<Cliente> todosClientes() {
     // Cria um List nulo
     List<Cliente> lista = null;
@@ -103,11 +115,12 @@ public class ClienteDAO {
  
   // Método que cria um objeto a partir de um registro
   private static Cliente popularCliente() throws SQLException {
+    int id = rs.getInt("id");
     String modelo = rs.getString("modelo");
     String marca = rs.getString("marca");
     String cor = rs.getString("cor");
     String ano = rs.getString("ano");
-    Cliente cliente = new Cliente(modelo, marca, ano, cor);
+    Cliente cliente = new Cliente(modelo, marca, ano, cor, id);
     return cliente;
   }
 }
