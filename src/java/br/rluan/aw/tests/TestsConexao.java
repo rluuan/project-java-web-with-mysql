@@ -16,7 +16,7 @@ public class TestsConexao {
     public static void main(String[] args) {
         ClienteDAO.conectar();
         ClienteDAO cl = new ClienteDAO();
-        cl.removerProduto(29);
+        cl.removerProduto(30);
         
     }
 }

@@ -26,15 +26,15 @@ public class ClienteDAO {
  
   // Método para retornar todos os registros
   public void removerProduto(int id) {
-      try {
-          ps = conexao.prepareStatement(sqlRemocao);
-          ps.setInt(1, id);
-          ps.execute();
-      } catch (Exception e) {
-          System.out.println(e);
+      if (conectar()) {
+        try {
+            ps = conexao.prepareStatement(sqlRemocao);
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println(e);
+        }      
       }
-      
-      return;
   }
   public static List<Cliente> todosClientes() {
     // Cria um List nulo

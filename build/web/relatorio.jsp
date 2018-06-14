@@ -107,7 +107,7 @@
                             <td> <% out.print(listaProdutos.get(i).getModelo()); %> </td>
                             <td> <% out.print(listaProdutos.get(i).getMarca()); %> </td>
                             <td> <% out.print(listaProdutos.get(i).getAno()); %> </td>
-                            <td> <% out.print(listaProdutos.get(i).getCor()); %> </td>
+                            <td> <input type="color" value="<% out.print(listaProdutos.get(i).getCor()); %>" /> </td>
                             <td> <button class="btn btn-danger" onclick="javascript:excluirProduto(<% out.print(listaProdutos.get(i).getId()); %>)"> Excluir </button> </td>
                         </tr>
                         <% } %>
@@ -148,16 +148,9 @@
     $('#table_id').DataTable();
 } );
 function excluirProduto(id) {
-    $.ajax({
-       url: 'excluirprodutowithId.do',
-       method: 'POST',
-       data: {
-           id: id
-       },
-       success: function(res) {
-           alert('Deletado com sucesso');
-           location.reload();
-       }
+    $.post("excluirprodutowithId.do",{ id: id }, function( data ) {
+        alert('Deletado com sucesso');
+        location.reload();
     });
 }
 </script>

@@ -138,7 +138,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="cadastro-produto" method="POST" data-parsley-validate class="form-horizontal form-label-left" action="cadastroProdutos.do">
+                    <form id="cadastro-produto" method="POST" onsubmit="return alert('Dados inseridos com sucesso')" data-parsley-validate class="form-horizontal form-label-left" action="cadastroProdutos.do">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="modelo">Modelo <span class="required">*</span>

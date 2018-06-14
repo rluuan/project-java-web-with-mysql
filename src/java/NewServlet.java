@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.rluan.aw.controle;
 
-import br.rluan.aw.modelo.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author trunks
  */
-@WebServlet(name = "excluirProdutoWithId", urlPatterns = {"/excluirprodutowithId.do"})
-public class excluirProdutoWithId extends HttpServlet {
+@WebServlet(urlPatterns = {"/NewServlet"})
+public class NewServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +30,19 @@ public class excluirProdutoWithId extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.sendRedirect("/Av1/relatorio.jsp");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,7 +58,6 @@ public class excluirProdutoWithId extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-       
     }
 
     /**
@@ -63,11 +72,6 @@ public class excluirProdutoWithId extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        ClienteDAO cd = new ClienteDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
-        cd.removerProduto(id);
-        
-        
     }
 
     /**
